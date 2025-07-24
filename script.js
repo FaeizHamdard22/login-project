@@ -1,2 +1,2 @@
 // Optional JS - Can be used for validation or logging later
-console.log("Login page loaded");
+console.log("Login page loaded : ");
