@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                 git branch: 'main', url: 'https://github.com/FaeizHamdard22/login-project.git'
+                git branch: 'main', url: 'https://github.com/FaeizHamdard22/login-project.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("login-project-image")
+                    docker.build('login-app')
                 }
             }
         }
@@ -19,10 +19,9 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    dockerImage.run("-p 8080:80")
+                    docker.image('login-app').run('-p 8080:80')
                 }
             }
         }
     }
 }
-
